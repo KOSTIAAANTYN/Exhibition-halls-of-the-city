@@ -17,6 +17,7 @@ public class Artists {
     private String name;
     private LocalDate birthday;
     private String country;
+    @Column(name="bio",columnDefinition="text")
     private String bio;
     private String a_work_of_art_info;
     @JoinColumn

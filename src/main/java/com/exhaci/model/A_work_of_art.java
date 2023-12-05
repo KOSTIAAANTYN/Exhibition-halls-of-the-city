@@ -1,13 +1,17 @@
 package com.exhaci.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Entity
 @Table
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class A_work_of_art {
     //витвір мистецтва
     @Id @GeneratedValue(strategy = GenerationType.AUTO)

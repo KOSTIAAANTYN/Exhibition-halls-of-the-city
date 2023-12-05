@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add and show Hall_Owner</title>
+</head>
+<body>
+<form th:action="@{/hall_owner/create}" method="post" >
+    Ім'я: <input type="text" name="name" class="form-control"><br><br>
+    Адрес: <input type="text" name="address" class="form-control"><br><br>
+    Номер: <input type="text" name="phone_number" class="form-control"><br><br>
+    <input type="submit" value="Додати власника" class="btn btn-primary">
+</form>
+<!--<div th:if="${productList.isEmpty}">-->
+<!--    <div>Товар відсутній</div>-->
+<!--</div>-->
+<!--<div th:unless="${productList.isEmpty}">-->
+<!--        <div th:each="product:${productList}">-->
+<!--                        <p th:text="${product.title}"></p>-->
+<!--                        <p th:text="${product.price + ' грн.'}"></p>-->
+<!--        </div>-->
+<!--</div>-->
+</body>
+</html>

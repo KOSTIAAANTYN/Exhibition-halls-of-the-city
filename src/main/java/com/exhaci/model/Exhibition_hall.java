@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "exhibition_hall")
 @Data
 public class Exhibition_hall  {
     //виставочний зал
@@ -17,9 +17,14 @@ public class Exhibition_hall  {
     private int area;
     private String address;
     private String phone_number;
-    @JoinColumn
-    @ManyToOne
-    private Hall_owner hall_owner;
+
+//    @JoinColumn
+//    @ManyToMany(cascade =CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "exhibition_halls")
+//    private List<Hall_owner> hall_owners=new ArrayList<>();
+
+    @ManyToMany(mappedBy = "exhibition_halls", cascade = CascadeType.ALL)
+    private List<Hall_owner> hall_owners = new ArrayList<>();
+
     @OneToMany(cascade =CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "exhibition_hall")
     private List<Exhibitions> exhibitions=new ArrayList<>();
 
