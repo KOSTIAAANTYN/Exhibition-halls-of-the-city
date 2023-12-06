@@ -5,20 +5,53 @@
     <title>Add and show Hall_Owner</title>
 </head>
 <body>
-<form th:action="@{/hall_owner/create}" method="post" >
-    Ім'я: <input type="text" name="name" class="form-control"><br><br>
-    Адрес: <input type="text" name="address" class="form-control"><br><br>
-    Номер: <input type="text" name="phone_number" class="form-control"><br><br>
+<form th:action="@{/hall_owner/create}" method="post">
+    Ім'я: <input type="text" name="name" class="form-control" required><br><br>
+    Адрес: <input type="text" name="address" class="form-control" required><br><br>
+    Номер: <input type="text" name="phone_number" class="form-control" required><br><br>
     <input type="submit" value="Додати власника" class="btn btn-primary">
 </form>
-<!--<div th:if="${productList.isEmpty}">-->
-<!--    <div>Товар відсутній</div>-->
-<!--</div>-->
-<!--<div th:unless="${productList.isEmpty}">-->
-<!--        <div th:each="product:${productList}">-->
-<!--                        <p th:text="${product.title}"></p>-->
-<!--                        <p th:text="${product.price + ' грн.'}"></p>-->
-<!--        </div>-->
-<!--</div>-->
+<p></p>
+<div th:if="${#lists.isEmpty(hall_ownerList)}">
+    <div>Власників немає</div>
+</div>
+<p></p>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div th:unless="${hall_ownerList.isEmpty}">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hall_owner : ${hall_ownerList}">
+            <td th:text="${hall_owner.name}"></td>
+            <td th:text="${hall_owner.address}"></td>
+            <td th:text="${hall_owner.phone_number}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 </body>
 </html>

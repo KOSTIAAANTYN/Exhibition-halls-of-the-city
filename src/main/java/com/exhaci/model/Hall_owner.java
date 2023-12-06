@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 public class Hall_owner {
     //власник залу
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String address;
