@@ -17,9 +17,10 @@ public class Artists {
     private String name;
     private LocalDate birthday;
     private String country;
+    private String phone_number;
     @Column(name="bio",columnDefinition="text")
     private String bio;
-    private String a_work_of_art_info;
+    private String a_work_of_art_info;//перенести
     @JoinColumn
     @ManyToOne
     private Exhibitions exhibitions;

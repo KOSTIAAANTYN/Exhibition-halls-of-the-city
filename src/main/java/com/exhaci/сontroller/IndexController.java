@@ -1,0 +1,29 @@
+package com.exhaci.сontroller;
+
+import com.exhaci.model.Exhibition_hall;
+import com.exhaci.services.IndexService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Controller
+@RequiredArgsConstructor
+public class IndexController {
+    private final IndexService indexService;
+
+    @GetMapping("/")
+    public String returnIndex(Model model) {
+        model.addAttribute("exhibition_hallsList", indexService.getexhibition_hallsList());
+        return "index";
+    }
+
+    @GetMapping("/exhibition_hall/{id}")
+    public String exhibition_hallInfo(@PathVariable Long id, Model model) {
+        Exhibition_hall exhibition_hall = indexService.getexhibition_hallById(id);
+        model.addAttribute("exhibition_hall", exhibition_hall);
+
+        return "exhibition_hall-info";
+    }
+}

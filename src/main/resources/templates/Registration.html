@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+    <script>
+        function toggleForm(formId) {
+            var forms = document.getElementsByTagName('form');
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = 'none';
+            }
+            document.getElementById(formId).style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+<label>
+    <input type="radio" name="userType" value="owner" onclick="toggleForm('ownerForm')"> Власник
+</label>
+<label>
+    <input type="radio" name="userType" value="artist" onclick="toggleForm('artistForm')"> Художник
+</label>
+<!--додати всюди паролі і щоб відслідковувати який тип користувача контролери сервіси і тд-->
+<form id="ownerForm" style="display:none;" th:action="@{/hall_owner/create}" method="post">
+    Ім'я власника: <input type="text" name="name" class="form-control" required><br><br>
+    Адрес власника: <input type="text" name="address" class="form-control" required><br><br>
+    Номер власника: <input type="text" name="phone_number" class="form-control" required><br><br>
+    <input type="submit" value="Додати власника" class="btn btn-primary">
+</form>
+
+
+<form id="artistForm" style="display:none;" th:action="@{/artists/create}" method="post">
+    Ім'я художника: <input type="text" name="name" class="form-control" required><br><br>
+    Країна художника: <input type="text" name="country" class="form-control" required><br><br>
+    Біографія художника: <input type="text" name="bio" class="form-control" required><br><br>
+    День народження художника: <input type="date" name="birthday" class="form-control" required><br><br>
+    Номер художника: <input type="text" name="phone_number" class="form-control" required><br><br>
+    <input type="submit" value="Додати художника" class="btn btn-primary">
+</form>
+
+</body>
+</html>

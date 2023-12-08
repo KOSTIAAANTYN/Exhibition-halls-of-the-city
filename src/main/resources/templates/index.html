@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Exhibition_halls</title>
+</head>
+<body>
+<h1>Exhibition_halls</h1>
+
+
+<!--поміняти user.email на пхон-->
+<div th:if="${user.email}">
+    <form action="/logout" method="post">
+        <input type="submit" value="Вийти" class="btn btn-primary">
+    </form>
+</div>
+
+<div th:unless="${user.email}">
+    <a href="/login" class="btn btn-primary">Увійти</a>
+</div>
+<br><br>
+
+<a href="/registration" class="btn btn-primary">Зареструватися </a>
+<hr>
+
+
+
+
+
+
+<div th:if="${#lists.isEmpty(exhibition_hallsList)}">
+    <div>Залів немає😢</div>
+</div>
+
+<div th:unless="${exhibition_hallsList.isEmpty}">
+    <div th:each="exhibition_hall:${exhibition_hallsList}">
+        <!--        <img th:src="@{/images/{id}(id=${exhibition_hall.previewImageId})}" height="100px">-->
+        <h5 th:text="${exhibition_hall.name}"></h5>
+        <h5 th:text="${exhibition_hall.address}"></h5>
+        <!--        <a th:href="@{/exhibition_hall/{id}(id=${exhibition_hall.id})}" class="btn-details">Детальніше...</a>-->
+    </div>
+</div>
+
+</body>
+</html>

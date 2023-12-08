@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class Hall_ownerController {
     private final Hall_ownerService hallOwnerService;
 
-    @GetMapping("/")
+    @GetMapping("/hall_owner")
     public String returntestandList(Model model) {
         model.addAttribute("hall_ownerList", hallOwnerService.getHallOwnerList());
         return "hall_owner";
