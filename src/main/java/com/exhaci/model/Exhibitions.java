@@ -1,5 +1,6 @@
 package com.exhaci.model;
 
+import com.exhaci.model.users.Artists;
 import jakarta.persistence.*;
 import lombok.Data;
 

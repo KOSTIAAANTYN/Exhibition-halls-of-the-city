@@ -19,6 +19,16 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/registration")
+    public String returnReg() {
+        return "reg";
+    }
+
+    @GetMapping("/create_hall")
+    public String returnCreateHall() {
+        return "create_hall";
+    }
+
     @GetMapping("/exhibition_hall/{id}")
     public String exhibition_hallInfo(@PathVariable Long id, Model model) {
         Exhibition_hall exhibition_hall = indexService.getexhibition_hallById(id);

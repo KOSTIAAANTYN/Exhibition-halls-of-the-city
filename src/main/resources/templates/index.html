@@ -8,19 +8,19 @@
 <h1>Exhibition_halls</h1>
 
 
-<!--поміняти user.email на пхон-->
-<div th:if="${user.email}">
-    <form action="/logout" method="post">
-        <input type="submit" value="Вийти" class="btn btn-primary">
-    </form>
-</div>
+<!--&lt;!&ndash;поміняти user.email на phone&ndash;&gt;-->
+<!--<div th:if="${hall_owner.phone_number||artist.phone_number}">-->
+<!--    <form action="/logout" method="post">-->
+<!--        <input type="submit" value="Вийти" class="btn btn-primary">-->
+<!--    </form>-->
+<!--</div>-->
 
-<div th:unless="${user.email}">
-    <a href="/login" class="btn btn-primary">Увійти</a>
-</div>
-<br><br>
-
-<a href="/registration" class="btn btn-primary">Зареструватися </a>
+<!--<div th:unless="${user.email}">-->
+<!--    <a href="/login" class="btn btn-primary">Увійти</a>-->
+<!--</div>-->
+<!--<br><br>-->
+<a href="/create_hall" class="btn btn-primary">Створити зал</a>
+<a href="/registration" class="btn btn-primary">Зареструвати</a>
 <hr>
 
 
@@ -32,14 +32,58 @@
     <div>Залів немає😢</div>
 </div>
 
+<!--<div th:unless="${exhibition_hallsList.isEmpty}">-->
+<!--    <div th:each="exhibition_hall:${exhibition_hallsList}">-->
+<!--        &lt;!&ndash;        <img th:src="@{/images/{id}(id=${exhibition_hall.previewImageId})}" height="100px">&ndash;&gt;-->
+<!--        <h5 th:text="${exhibition_hall.name}"></h5>-->
+<!--        <h5 th:text="${exhibition_hall.address}"></h5>-->
+<!--        <h5 th:text="${exhibition_hall.area}">км^2</h5>-->
+<!--        &lt;!&ndash;        <a th:href="@{/exhibition_hall/{id}(id=${exhibition_hall.id})}" class="btn-details">Детальніше...</a>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
 <div th:unless="${exhibition_hallsList.isEmpty}">
-    <div th:each="exhibition_hall:${exhibition_hallsList}">
-        <!--        <img th:src="@{/images/{id}(id=${exhibition_hall.previewImageId})}" height="100px">-->
-        <h5 th:text="${exhibition_hall.name}"></h5>
-        <h5 th:text="${exhibition_hall.address}"></h5>
-        <!--        <a th:href="@{/exhibition_hall/{id}(id=${exhibition_hall.id})}" class="btn-details">Детальніше...</a>-->
-    </div>
-</div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone number</th>
+            <th>Area in km^2</th>
 
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="exhibition_hall : ${exhibition_hallsList}">
+            <td th:text="${exhibition_hall.name}"></td>
+            <td th:text="${exhibition_hall.address}"></td>
+            <td th:text="${exhibition_hall.phone_number}"></td>
+            <td th:text="${exhibition_hall.area}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+
+
+
+
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
 </body>
 </html>

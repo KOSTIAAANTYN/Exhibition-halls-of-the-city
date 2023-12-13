@@ -1,5 +1,7 @@
-package com.exhaci.model;
+package com.exhaci.model.users;
 
+import com.exhaci.model.A_work_of_art;
+import com.exhaci.model.Exhibitions;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,18 +11,15 @@ import java.util.List;
 
 @Entity
 @Data
-@Table
-public class Artists {
+@DiscriminatorValue("artist")
+public class Artists extends User {
     //художник
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
     private String name;
     private LocalDate birthday;
     private String country;
     private String phone_number;
     @Column(name="bio",columnDefinition="text")
     private String bio;
-    private String a_work_of_art_info;//перенести
     @JoinColumn
     @ManyToOne
     private Exhibitions exhibitions;
@@ -28,6 +27,8 @@ public class Artists {
     private List<A_work_of_art> a_work_of_arts=new ArrayList<>();
 
 
-
-
+    @Override
+    public String getUserType() {
+        return "artist";
+    }
 }

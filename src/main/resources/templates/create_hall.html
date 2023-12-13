@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Exhibition_hall</title>
+</head>
+<body>
+<form th:action="@{/create_hall/create}" method="post">
+    Ім'я: <input type="text" name="name" class="form-control" required><br><br>
+    Адрес: <input type="text" name="address" class="form-control" required><br><br>
+    Номер: <input type="text" name="phone_number" class="form-control" required><br><br>
+    Площа(в км^2): <input type="number" name="area" class="form-control" required><br><br>
+    <input type="submit" value="Додати зал" class="btn btn-primary">
+</form>
+
+</body>
+</html>

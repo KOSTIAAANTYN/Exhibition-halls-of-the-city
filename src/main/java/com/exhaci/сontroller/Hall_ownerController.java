@@ -1,6 +1,7 @@
 package com.exhaci.сontroller;
 
-import com.exhaci.model.Hall_owner;
+import com.exhaci.model.Exhibition_hall;
+import com.exhaci.model.users.Hall_owner;
 import com.exhaci.services.Hall_ownerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,12 @@ public class Hall_ownerController {
     @PostMapping("/hall_owner/create")
     public String createHall_owner(Hall_owner hall_owner) {
         hallOwnerService.saveHall_owner(hall_owner);
+        return "redirect:/hall_owner";
+    }
+
+    @PostMapping("/create_hall/create")
+    public String createHall(Exhibition_hall exhibition_hall) {
+        hallOwnerService.saveHall(exhibition_hall);
         return "redirect:/";
     }
 

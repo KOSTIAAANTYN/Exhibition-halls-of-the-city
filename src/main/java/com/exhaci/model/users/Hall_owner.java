@@ -1,5 +1,6 @@
-package com.exhaci.model;
+package com.exhaci.model.users;
 
+import com.exhaci.model.Exhibition_hall;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -7,20 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Table(name = "hall_owner")
+@DiscriminatorValue("hall_owner")
 @Entity
-public class Hall_owner {
+public class Hall_owner extends User{
     //власник залу
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
     private String name;
     private String address;
     private String phone_number;
 
-//    @JoinColumn
-//    @ManyToMany(cascade =CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "hall_owners")
-//    private List<Exhibition_hall> exhibition_halls=new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -29,4 +24,9 @@ public class Hall_owner {
             inverseJoinColumns = @JoinColumn(name = "exhibition_hall_id")
     )
     private List<Exhibition_hall> exhibition_halls = new ArrayList<>();
+
+    @Override
+    public String getUserType() {
+        return "hall_owner";
+    }
 }

@@ -1,5 +1,6 @@
 package com.exhaci.model;
 
+import com.exhaci.model.users.Artists;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class A_work_of_art {
     private LocalDate dateOfCreate;
     private int height;
     private int width;
+    private String a_work_of_art_info;
     @JoinColumn
     @ManyToOne
     private Artists artists;

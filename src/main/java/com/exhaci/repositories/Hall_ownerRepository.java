@@ -1,6 +1,6 @@
 package com.exhaci.repositories;
 
-import com.exhaci.model.Hall_owner;
+import com.exhaci.model.users.Hall_owner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
