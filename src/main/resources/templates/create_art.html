@@ -1,19 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
     <title>Add a work of art</title>
 </head>
+
 <body>
-<h1>Create a work of art</h1>
-<form th:action="@{/create_art}" method="post">
-    Ім'я: <input type="text" name="name" class="form-control" required><br><br>
-    Матеріал: <input type="text" name="art_material" class="form-control" required><br><br>
-    Висота(см): <input type="number" name="height" class="form-control" required><br><br>
-    Ширина(см): <input type="number" name="width" class="form-control" required><br><br>
-    Короткий опис: <input type="text" name="a_work_of_art_info" class="form-control" required><br><br>
-    <input type="submit" value="Додати витвір" class="btn btn-primary">
-</form>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            height: auto;
+            width: 500px;
+            border: 2px solid gray;
+            border-radius: 20px;
+            padding: 30px 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        h1{
+            text-align: center;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input {
+            font-size: 18px;
+            padding: 3px;
+            border: 2px solid black;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        span{
+            font-size: 18px;
+        }
+
+        button{
+            margin: 0 auto;
+            margin-top: 10px;
+            font-size: 18px;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            outline: none;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
+        button:active{
+            background-color: lightgrey;
+            color: black;
+        }
+    </style>
+    
+    <div class="container">
+        
+        <form th:action="@{/create_art}" method="post">
+            <h1>Create a work of art</h1>
+            <div><span>Ім'я:</span> <input placeholder="Ім'я" type="text" name="name" class="form-control" required></div>
+            <div><span>Матеріал:</span> <input placeholder="Матеріал" type="text" name="art_material" class="form-control" required></div>
+            <div><span>Висота(см):</span> <input placeholder="Висота" type="number" name="height" class="form-control" required></div>
+            <div><span>Ширина(см):</span> <input placeholder="Ширина" type="number" name="width" class="form-control" required></div>
+            <div><span> Короткий опис:</span> <input placeholder="Короткий опис" type="text" name="a_work_of_art_info" class="form-control"
+                    required>
+            </div>
+            <div> <button type="submit" class="btn btn-primary">Додати витвір</button></div>
+        </form>
+    </div>
 
 </body>
+
 </html>

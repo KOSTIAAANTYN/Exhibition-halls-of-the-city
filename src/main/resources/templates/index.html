@@ -1,104 +1,172 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
     <title>Exhibition_halls</title>
 </head>
+
 <body>
-<h1>Eliops</h1>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body{
+            padding: 10px;
+            padding-top: 0;
+        }
+
+        h1{
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .cont-a{
+            padding-bottom: 10px;
+        }
+
+        a{
+            padding-bottom: 10px;
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            text-align: center;
+            transition-duration: 0.5s;
+            border: 2px solid black;
+            display: block;
+            padding: 7px;
+            border-radius: 5px;
+        }
+
+        a:hover{
+            transform: scale(1.1);
+            color: white;
+            background-color: black;
+        }
+
+        .no{
+            text-align: center;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cont{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 25px;
+            padding-bottom: 15px;
+            margin: 0 auto;
+            width: 70%;
+        }
+
+    </style>
+    <h1>Eliops</h1>
 
 
-<a href="/create_hall" class="btn btn-primary">Створити зал</a><br>
-<a href="/create_a_work_of_art" class="btn btn-primary">Створити витвір мистецтва</a><br>
-<a href="/registration" class="btn btn-primary">Зареструвати</a><br>
-<hr>
-<h1>Exhibition halls</h1>
-
-
-
-
-
-<div th:if="${#lists.isEmpty(exhibition_hallsList)}">
-    <div>Залів немає😢</div>
-</div>
-
-<div th:unless="${exhibition_hallsList.isEmpty}">
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone number</th>
-            <th>Area in km^2</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="exhibition_hall : ${exhibition_hallsList}">
-            <td th:text="${exhibition_hall.name}"></td>
-            <td th:text="${exhibition_hall.address}"></td>
-            <td th:text="${exhibition_hall.phone_number}"></td>
-            <td th:text="${exhibition_hall.area}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<hr>
-
-
-
-
-
-<h1>Works of art</h1>
-<div th:if="${#lists.isEmpty(artsList)}">
-    <div>Витворів немає😢</div>
-</div>
-
-<div th:unless="${artsList.isEmpty}">
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Art material</th>
-            <th>Date of create</th>
-            <th>Height</th>
-            <th>Width</th>
-            <th>Art info</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="art : ${artsList}">
-            <td th:text="${art.name}"></td>
-            <td th:text="${art.art_material}"></td>
-            <td th:text="${art.dateOfCreate}"></td>
-            <td th:text="${art.height}"></td>
-            <td th:text="${art.width}"></td>
-            <td th:text="${art.a_work_of_art_info}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="cont">
+        <a href="/create_hall" class="btn btn-primary">Створити зал</a>
+        <a href="/create_a_work_of_art" class="btn btn-primary">Створити витвір мистецтва</a>
+        <a href="/registration" class="btn btn-primary">Зареструвати</a>
+    </div>
+    <h1 style="padding-top: 50px;">Exhibition halls</h1>
 
 
 
 
 
-<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+    <div th:if="${#lists.isEmpty(exhibition_hallsList)}">
+        <div class="no">Залів немає😢</div>
+    </div>
 
-    th, td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
+    <div th:unless="${exhibition_hallsList.isEmpty}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone number</th>
+                    <th>Area in km^2</th>
 
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="exhibition_hall : ${exhibition_hallsList}">
+                    <td th:text="${exhibition_hall.name}"></td>
+                    <td th:text="${exhibition_hall.address}"></td>
+                    <td th:text="${exhibition_hall.phone_number}"></td>
+                    <td th:text="${exhibition_hall.area}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+    <h1 style="padding-top: 50px;">Works of art</h1>
+    <div th:if="${#lists.isEmpty(artsList)}">
+        <div class="no">Витворів немає😢</div>
+    </div>
+
+    <div th:unless="${artsList.isEmpty}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Art material</th>
+                    <th>Date of create</th>
+                    <th>Height</th>
+                    <th>Width</th>
+                    <th>Art info</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="art : ${artsList}">
+                    <td th:text="${art.name}"></td>
+                    <td th:text="${art.art_material}"></td>
+                    <td th:text="${art.dateOfCreate}"></td>
+                    <td th:text="${art.height}"></td>
+                    <td th:text="${art.width}"></td>
+                    <td th:text="${art.a_work_of_art_info}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            font-size: 18px;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </body>
+
 </html>
