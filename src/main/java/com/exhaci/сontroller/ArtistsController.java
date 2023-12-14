@@ -1,7 +1,7 @@
 package com.exhaci.сontroller;
 
+import com.exhaci.model.A_work_of_art;
 import com.exhaci.model.users.Artists;
-import com.exhaci.repositories.ArtistsRepository;
 import com.exhaci.services.ArtistsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,12 @@ public class ArtistsController {
     @PostMapping("/artists/create")
     public String createArtists(Artists artists){
         artistsService.saveArtists(artists);
+        return "redirect:/";
+    }
+
+    @PostMapping("/create_art")
+    public String createA_work_of_art(A_work_of_art art){
+        artistsService.saveA_work_of_art(art);
         return "redirect:/";
     }
 }

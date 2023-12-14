@@ -1,17 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap"
+        rel="stylesheet">
     <title>Add Exhibition_hall</title>
 </head>
+
 <body>
-<form th:action="@{/create_hall/create}" method="post">
-    Ім'я: <input type="text" name="name" class="form-control" required><br><br>
-    Адрес: <input type="text" name="address" class="form-control" required><br><br>
-    Номер: <input type="text" name="phone_number" class="form-control" required><br><br>
-    Площа(в км^2): <input type="number" name="area" class="form-control" required><br><br>
-    <input type="submit" value="Додати зал" class="btn btn-primary">
-</form>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            height: auto;
+            width: 500px;
+            border: 2px solid gray;
+            border-radius: 20px;
+            padding: 30px 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        h1{
+            text-align: center;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input {
+            font-size: 18px;
+            padding: 3px;
+            border: 2px solid black;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        span{
+            font-size: 18px;
+        }
+
+        button{
+            margin: 0 auto;
+            margin-top: 10px;
+            font-size: 18px;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            outline: none;
+        }
+        button:hover{
+            background-color: black;
+            color: white;
+        }
+        button:active{
+            background-color: lightgrey;
+            color: black;
+        }
+    </style>
+    
+    <div class="container">
+        
+        <form th:action="@{/create_hall/create}" method="post">
+            <h1>Create Hall</h1>
+            <div><span>Ім'я:</span> <input placeholder="Name" type="text" name="name" class="form-control" required></div>
+            <div><span>Адрес:</span> <input placeholder="Adress" type="text" name="address" class="form-control" required></div>
+            <div><span>Номер:</span> <input type="text" placeholder="Phone number" name="phone_number" class="form-control" required></div>
+            <div><span>Площа(в км^2):</span> <input type="number" placeholder="Area" name="area" class="form-control" required></div>
+            <div> <button type="submit" class="btn btn-primary">Додати зал</button></div>
+        </form>
+    </div>
 
 </body>
+
 </html>

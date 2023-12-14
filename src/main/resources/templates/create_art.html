@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a work of art</title>
+</head>
+<body>
+<h1>Create a work of art</h1>
+<form th:action="@{/create_art}" method="post">
+    Ім'я: <input type="text" name="name" class="form-control" required><br><br>
+    Матеріал: <input type="text" name="art_material" class="form-control" required><br><br>
+    Висота(см): <input type="number" name="height" class="form-control" required><br><br>
+    Ширина(см): <input type="number" name="width" class="form-control" required><br><br>
+    Короткий опис: <input type="text" name="a_work_of_art_info" class="form-control" required><br><br>
+    <input type="submit" value="Додати витвір" class="btn btn-primary">
+</form>
+
+</body>
+</html>

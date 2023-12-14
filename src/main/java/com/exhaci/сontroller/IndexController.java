@@ -16,6 +16,7 @@ public class IndexController {
     @GetMapping("/")
     public String returnIndex(Model model) {
         model.addAttribute("exhibition_hallsList", indexService.getexhibition_hallsList());
+        model.addAttribute("artsList", indexService.getArtsList());
         return "index";
     }
 
@@ -27,6 +28,11 @@ public class IndexController {
     @GetMapping("/create_hall")
     public String returnCreateHall() {
         return "create_hall";
+    }
+
+    @GetMapping("/create_a_work_of_art")
+    public String returnCreateArt() {
+        return "create_art";
     }
 
     @GetMapping("/exhibition_hall/{id}")

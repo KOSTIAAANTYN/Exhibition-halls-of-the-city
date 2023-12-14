@@ -5,24 +5,14 @@
     <title>Exhibition_halls</title>
 </head>
 <body>
-<h1>Exhibition_halls</h1>
+<h1>Eliops</h1>
 
 
-<!--&lt;!&ndash;поміняти user.email на phone&ndash;&gt;-->
-<!--<div th:if="${hall_owner.phone_number||artist.phone_number}">-->
-<!--    <form action="/logout" method="post">-->
-<!--        <input type="submit" value="Вийти" class="btn btn-primary">-->
-<!--    </form>-->
-<!--</div>-->
-
-<!--<div th:unless="${user.email}">-->
-<!--    <a href="/login" class="btn btn-primary">Увійти</a>-->
-<!--</div>-->
-<!--<br><br>-->
-<a href="/create_hall" class="btn btn-primary">Створити зал</a>
-<a href="/registration" class="btn btn-primary">Зареструвати</a>
+<a href="/create_hall" class="btn btn-primary">Створити зал</a><br>
+<a href="/create_a_work_of_art" class="btn btn-primary">Створити витвір мистецтва</a><br>
+<a href="/registration" class="btn btn-primary">Зареструвати</a><br>
 <hr>
-
+<h1>Exhibition halls</h1>
 
 
 
@@ -32,15 +22,6 @@
     <div>Залів немає😢</div>
 </div>
 
-<!--<div th:unless="${exhibition_hallsList.isEmpty}">-->
-<!--    <div th:each="exhibition_hall:${exhibition_hallsList}">-->
-<!--        &lt;!&ndash;        <img th:src="@{/images/{id}(id=${exhibition_hall.previewImageId})}" height="100px">&ndash;&gt;-->
-<!--        <h5 th:text="${exhibition_hall.name}"></h5>-->
-<!--        <h5 th:text="${exhibition_hall.address}"></h5>-->
-<!--        <h5 th:text="${exhibition_hall.area}">км^2</h5>-->
-<!--        &lt;!&ndash;        <a th:href="@{/exhibition_hall/{id}(id=${exhibition_hall.id})}" class="btn-details">Детальніше...</a>&ndash;&gt;-->
-<!--    </div>-->
-<!--</div>-->
 <div th:unless="${exhibition_hallsList.isEmpty}">
     <table>
         <thead>
@@ -64,6 +45,40 @@
 </div>
 <hr>
 
+
+
+
+
+<h1>Works of art</h1>
+<div th:if="${#lists.isEmpty(artsList)}">
+    <div>Витворів немає😢</div>
+</div>
+
+<div th:unless="${artsList.isEmpty}">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Art material</th>
+            <th>Date of create</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Art info</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="art : ${artsList}">
+            <td th:text="${art.name}"></td>
+            <td th:text="${art.art_material}"></td>
+            <td th:text="${art.dateOfCreate}"></td>
+            <td th:text="${art.height}"></td>
+            <td th:text="${art.width}"></td>
+            <td th:text="${art.a_work_of_art_info}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 
 
